@@ -9,7 +9,7 @@ import {
   handleMoveWithinParent,
   handleMoveToDifferentParent,
   handleMoveSidebarComponentIntoParent,
-  handleRemoveItemFromLayout
+  handleRemoveItemFromLayout,
 } from "./helpers";
 
 import { SIDEBAR_ITEMS, SIDEBAR_ITEM, COMPONENT, COLUMN } from "./constants";
@@ -31,8 +31,8 @@ const Container = () => {
 
   const handleDrop = useCallback(
     (dropZone, item) => {
-      console.log('dropZone', dropZone)
-      console.log('item', item)
+      console.log("dropZone", dropZone);
+      console.log("item", item);
 
       const splitDropZonePath = dropZone.path.split("-");
       const pathToDropZone = splitDropZonePath.slice(0, -1).join("-");
@@ -47,15 +47,15 @@ const Container = () => {
         // 1. Move sidebar item into page
         const newComponent = {
           id: shortid.generate(),
-          ...item.component
+          ...item.component,
         };
         const newItem = {
           id: newComponent.id,
-          type: COMPONENT
+          type: COMPONENT,
         };
         setComponents({
           ...components,
-          [newComponent.id]: newComponent
+          [newComponent.id]: newComponent,
         });
         setLayout(
           handleMoveSidebarComponentIntoParent(
@@ -124,9 +124,18 @@ const Container = () => {
   return (
     <div className="body">
       <div className="sideBar">
-        {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (
-          <SideBarItem key={sideBarItem.id} data={sideBarItem} />
-        ))}
+        <h1 className="sidebar_title">ITEMS</h1>
+        <div className="sidebar_all_items">
+          {Object.values(SIDEBAR_ITEMS).map((sideBarItem, index) => (
+            <SideBarItem key={sideBarItem.id} data={sideBarItem} />
+          ))}
+        </div>
+        <TrashDropZone
+          data={{
+            layout,
+          }}
+          onDrop={handleDropToTrashBin}
+        />
       </div>
       <div className="pageContainer">
         <div className="page">
@@ -138,7 +147,7 @@ const Container = () => {
                 <DropZone
                   data={{
                     path: currentPath,
-                    childrenCount: layout.length
+                    childrenCount: layout.length,
                   }}
                   onDrop={handleDrop}
                   path={currentPath}
@@ -150,19 +159,12 @@ const Container = () => {
           <DropZone
             data={{
               path: `${layout.length}`,
-              childrenCount: layout.length
+              childrenCount: layout.length,
             }}
             onDrop={handleDrop}
             isLast
           />
         </div>
-
-        <TrashDropZone
-          data={{
-            layout
-          }}
-          onDrop={handleDropToTrashBin}
-        />
       </div>
     </div>
   );

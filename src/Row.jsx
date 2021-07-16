@@ -13,11 +13,11 @@ const Row = ({ data, components, handleDrop, path }) => {
       type: ROW,
       id: data.id,
       children: data.children,
-      path
+      path,
     },
-    collect: monitor => ({
-      isDragging: monitor.isDragging()
-    })
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
   });
 
   const opacity = isDragging ? 0 : 1;
@@ -37,7 +37,7 @@ const Row = ({ data, components, handleDrop, path }) => {
 
   return (
     <div ref={ref} style={{ ...style, opacity }} className="base draggable row">
-      {data.id}
+      {/* {data.id} */}
       <div className="columns">
         {data.children.map((column, index) => {
           const currentPath = `${path}-${index}`;
@@ -59,7 +59,7 @@ const Row = ({ data, components, handleDrop, path }) => {
         <DropZone
           data={{
             path: `${path}-${data.children.length}`,
-            childrenCount: data.children.length
+            childrenCount: data.children.length,
           }}
           onDrop={handleDrop}
           className="horizontalDrag"

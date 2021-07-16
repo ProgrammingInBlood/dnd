@@ -13,11 +13,11 @@ const Column = ({ data, components, handleDrop, path }) => {
       type: COLUMN,
       id: data.id,
       children: data.children,
-      path
+      path,
     },
     collect: (monitor) => ({
-      isDragging: monitor.isDragging()
-    })
+      isDragging: monitor.isDragging(),
+    }),
   });
 
   const opacity = isDragging ? 0 : 1;
@@ -40,7 +40,7 @@ const Column = ({ data, components, handleDrop, path }) => {
       style={{ ...style, opacity }}
       className="base draggable column"
     >
-      {data.id}
+      {/* {data.id} */}
       {data.children.map((component, index) => {
         const currentPath = `${path}-${index}`;
 
@@ -49,7 +49,7 @@ const Column = ({ data, components, handleDrop, path }) => {
             <DropZone
               data={{
                 path: currentPath,
-                childrenCount: data.children.length
+                childrenCount: data.children.length,
               }}
               onDrop={handleDrop}
             />
@@ -60,7 +60,7 @@ const Column = ({ data, components, handleDrop, path }) => {
       <DropZone
         data={{
           path: `${path}-${data.children.length}`,
-          childrenCount: data.children.length
+          childrenCount: data.children.length,
         }}
         onDrop={handleDrop}
         isLast

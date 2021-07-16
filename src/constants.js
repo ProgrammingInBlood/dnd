@@ -11,39 +11,39 @@ export const SIDEBAR_ITEMS = [
     type: SIDEBAR_ITEM,
     component: {
       type: "input",
-      content: "Some input"
-    }
+      content: `<input class="component_input" type="text" placeholder="Input"  /> : <input class="component_input" type="text" placeholder="Input Value"  />`,
+    },
   },
   {
     id: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
       type: "name",
-      content: "Some name"
-    }
+      content: `Name : <input class="component_input" type="text" placeholder="Enter Name"  />`,
+    },
   },
   {
     id: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
       type: "email",
-      content: "Some email"
-    }
+      content: `Email : <input class="component_input" type="text" placeholder="Enter Email"  />`,
+    },
   },
   {
     id: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
       type: "phone",
-      content: "Some phone"
-    }
+      content: `Phone : <input class="component_input" type="text" placeholder="Enter Phone Number"  />`,
+    },
   },
   {
     id: shortid.generate(),
     type: SIDEBAR_ITEM,
     component: {
       type: "image",
-      content: "Some image"
-    }
-  }
+      content: "Some image",
+    },
+  },
 ];
